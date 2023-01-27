@@ -35,13 +35,23 @@ export const ImageTile: FC<Props> = (props) => {
       {isActive && (
         <Row>
           <Col p="0.5rem">
-            <Paragraph fontSize="0.5rem">{image.name}</Paragraph>
+            <Paragraph fontSize="0.5rem" color="primary">
+              {image.name}
+            </Paragraph>
             <Paragraph fontSize="0.5rem">{image.size}</Paragraph>
-            <Paragraph fontSize="0.5rem">{`Uploaded: ${image.uploadedAt}`}</Paragraph>
-            <Paragraph fontSize="0.5rem">{`Size: ${image.width}x${image.height}`}</Paragraph>
+            <Paragraph
+              fontSize="0.5rem"
+              color="primary"
+            >{`Uploaded: ${image.uploadedAt}`}</Paragraph>
+            <Paragraph
+              fontSize="0.5rem"
+              color="primary"
+            >{`Size: ${image.width}x${image.height}`}</Paragraph>
             {image.description && (
               <>
-                <Paragraph fontSize="0.5rem">Details</Paragraph>
+                <Paragraph fontSize="0.5rem" color="primary">
+                  Details
+                </Paragraph>
                 <Paragraph fontSize="0.5rem">{image.description}</Paragraph>
               </>
             )}
