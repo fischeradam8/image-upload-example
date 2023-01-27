@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import {
   Box,
@@ -11,40 +11,18 @@ import {
 } from "./components";
 import theme from "./themes";
 import { ThemeProvider } from "styled-components";
+import { getImages, Image } from "./services/image/service";
 
 function App() {
-  const placeholderData = [
-    {
-      id: "1",
-      name: "placeholder1",
-      size: "1.21MB",
-      width: "1280",
-      height: "1200",
-      uploadedAt: "2023-01-24",
-      uploadedFrom: "192.168.1.1",
-      description: "Lorem ipsum...",
-    },
-    {
-      id: "2",
-      name: "placeholder2",
-      size: "1.22MB",
-      width: "1280",
-      height: "1200",
-      uploadedAt: "2023-01-24",
-      uploadedFrom: "192.168.1.1",
-      description: "Lorem ipsum 2...",
-    },
-    {
-      id: "3",
-      name: "placeholder3",
-      size: "1.23MB",
-      width: "1280",
-      height: "1200",
-      uploadedAt: "2023-01-24",
-      uploadedFrom: "192.168.1.1",
-      description: "Lorem ipsum 3...",
-    },
-  ];
+  const [images, setImages] = useState<undefined | Image[]>();
+
+  //TODO handle errors, prevent loop
+  useEffect(() => {
+    if (!images) {
+      getImages().then((data) => setImages(data as Image[]));
+    }
+  }, [images]);
+
   return (
     <ThemeProvider theme={theme}>
       <Container>
@@ -78,11 +56,8 @@ function App() {
                 borderWidth={1}
                 borderStyle="solid"
               ></Box>
-              {placeholderData.map((placeholder) => (
-                <ImageTile
-                  key={`${placeholder.id}-image`}
-                  image={placeholder}
-                ></ImageTile>
+              {images?.map((image) => (
+                <ImageTile key={`${image.id}-image`} image={image}></ImageTile>
               ))}
             </Row>
           </Col>

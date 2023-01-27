@@ -1,17 +1,6 @@
 import { FC, useState } from "react";
 import { Box, Col, Paragraph, Row } from "../../atoms";
-
-//TODO move to service once initialized
-interface Image {
-  id: string;
-  name: string;
-  size: string;
-  width: string;
-  height: string;
-  uploadedAt: string;
-  uploadedFrom: string;
-  description?: string;
-}
+import { Image } from "../../../services/image/service";
 
 interface Props {
   image: Image;
