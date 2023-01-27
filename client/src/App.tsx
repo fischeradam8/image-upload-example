@@ -1,6 +1,14 @@
 import React from "react";
 import "./App.css";
-import { Box, Col, Container, LimeIcon, Row, Title } from "./components";
+import {
+  Box,
+  Col,
+  Container,
+  ImageTile,
+  LimeIcon,
+  Row,
+  Title,
+} from "./components";
 
 function App() {
   const placeholderData = [
@@ -59,7 +67,6 @@ function App() {
         <Col px="2rem" gap={2}>
           <Title>Uploaded images</Title>
           <Row gap={2}>
-            {/*TODO add separate components */}
             <Box
               backgroundColor="#c7ea46"
               height="10rem"
@@ -69,14 +76,11 @@ function App() {
               borderWidth={1}
               borderStyle="solid"
             ></Box>
-            {placeholderData.map((data) => (
-              <Box
-                key={`${data.id}-image`}
-                height="10rem"
-                width="10rem"
-                borderRadius={5}
-                backgroundColor="grey"
-              ></Box>
+            {placeholderData.map((placeholder) => (
+              <ImageTile
+                key={`${placeholder.id}-image`}
+                image={placeholder}
+              ></ImageTile>
             ))}
           </Row>
         </Col>

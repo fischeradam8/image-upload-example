@@ -2,8 +2,6 @@ import styled from "styled-components";
 import {
   border,
   BorderProps,
-  boxShadow,
-  BoxShadowProps,
   color,
   ColorProps,
   flexbox,
@@ -14,23 +12,28 @@ import {
   PositionProps,
   space,
   SpaceProps,
+  TypographyProps,
+  typography,
 } from "styled-system";
 
 interface Props
   extends BorderProps,
-    BoxShadowProps,
     ColorProps,
     FlexboxProps,
     LayoutProps,
     PositionProps,
-    SpaceProps {}
+    SpaceProps,
+    TypographyProps {}
 
-export const Box = styled.div<Props>`
+export const Paragraph = styled.p<Props>`
+  font-size: 1rem;
+  margin-top: 0;
+
   ${border};
-  ${boxShadow};
   ${color};
   ${flexbox};
   ${space};
   ${layout};
   ${position};
+  ${typography}
 `;
