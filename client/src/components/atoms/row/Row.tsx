@@ -30,7 +30,7 @@ export const Row = styled.div<Props>`
   flex-wrap: wrap;
 
   & > *:not(:last-child) {
-    margin-right: ${(props) => (props.gap ? `${props.gap}em` : "1em")};
+    margin-right: ${(props) => (props.gap ? `${props.gap}rem` : "1rem")};
   }
   ${border};
   ${color};

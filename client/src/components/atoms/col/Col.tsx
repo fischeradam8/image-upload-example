@@ -30,7 +30,7 @@ export const Col = styled.div<Props>`
   margin-top: 0;
 
   & > *:not(:last-child) {
-    margin-bottom: ${(props) => (props.gap ? `${props.gap}em` : "1em")};
+    margin-bottom: ${(props) => (props.gap ? `${props.gap}rem` : "1rem")};
   }
   ${border};
   ${color};

@@ -23,7 +23,7 @@ interface Props
     SpaceProps {}
 
 export const Title = styled.h1<Props>`
-  font-size: 2em;
+  font-size: 2rem;
 
   ${border};
   ${color};
