@@ -14,7 +14,6 @@ export const FileInput: FC<Props> = (props) => {
       name="file"
       accept="image/jpeg, image/png"
       type="file"
-      hidden
       onChange={(event) => {
         const fileReader = new FileReader();
         fileReader.onload = () => {

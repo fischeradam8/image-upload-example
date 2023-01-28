@@ -1,6 +1,5 @@
 import React, { FC } from "react";
-import { Box, PlusIcon } from "../../atoms";
-import { FileInput } from "../file-input";
+import { Box, FileInput, PlusIcon } from "../../atoms";
 
 interface Props {
   onClick?: () => void;
