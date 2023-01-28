@@ -10,16 +10,15 @@ import {
   Modal,
   Paragraph,
   Row,
-  TextArea,
   Title,
 } from "./components";
 import theme from "./themes";
 import { ThemeProvider } from "styled-components";
-import { getImages, Image, uploadImage } from "./services/image/service";
+import { getImages, ApiImage, uploadImage } from "./services/image/service";
 import { Field, Form, Formik } from "formik";
 
 function App() {
-  const [images, setImages] = useState<undefined | Image[]>();
+  const [images, setImages] = useState<undefined | ApiImage[]>();
   const [isModalOpen, setModalOpen] = useState(false);
 
   const initialValues = {
@@ -30,7 +29,7 @@ function App() {
   //TODO handle errors, prevent loop
   useEffect(() => {
     if (!images) {
-      getImages().then((data) => setImages(data as Image[]));
+      getImages().then((data) => setImages(data as ApiImage[]));
     }
   }, [images]);
 

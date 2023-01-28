@@ -9,15 +9,15 @@ const port = "3001";
 const upload = multer();
 
 app.use(cors());
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: "10mb" }));
 
 interface ImageInterface {
-  image: Buffer;
+  image: string;
   description?: string;
 }
 
 const imageSchema = new Schema<ImageInterface>({
-  image: { type: Buffer, required: true },
+  image: { type: String, required: true },
   description: { type: String, required: false },
 });
 
@@ -39,8 +39,7 @@ app.post(
         image: request.body.file,
         description: request.body.description,
       });
-      document.save().then(() => console.log(document));
-      response.send("OK");
+      document.save().then(() => response.send());
     });
   }
 );

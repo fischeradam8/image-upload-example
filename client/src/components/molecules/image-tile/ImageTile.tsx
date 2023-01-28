@@ -1,10 +1,10 @@
 import React, { FC, useState } from "react";
 import { Box, Col, Paragraph, PlusIcon, Row } from "../../atoms";
-import { Image } from "../../../services/image/service";
+import { ApiImage } from "../../../services/image/service";
 import { FileInput } from "../file-input";
 
 interface Props {
-  image?: Image;
+  image?: ApiImage;
   onClick?: () => void;
   hasInput?: boolean;
 }
@@ -26,6 +26,7 @@ export const ImageTile: FC<Props> = (props) => {
           onMouseEnter={() => toggleActive((prevState) => !prevState)}
           onMouseLeave={() => toggleActive((prevState) => !prevState)}
         >
+          <img src={image.image ?? ""} alt="" />
           {isActive && (
             <Row>
               <Col p="0.5rem">

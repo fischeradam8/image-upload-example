@@ -1,7 +1,8 @@
 import { restClient } from "../rest-client";
 
-export interface Image {
+export interface ApiImage {
   id: string;
+  image: string;
   name: string;
   size: string;
   width: string;
@@ -15,5 +16,7 @@ export const getImages = () =>
   restClient.get("/images").then((data) => data.data);
 
 //TODO fix typings, error handling
-export const uploadImage = (data: { file: string | null; description?: string }) =>
-  restClient.post("/images", data);
+export const uploadImage = (data: {
+  file: string | null;
+  description?: string;
+}) => restClient.post("/images", data);
