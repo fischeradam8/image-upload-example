@@ -13,3 +13,7 @@ export interface Image {
 
 export const getImages = () =>
   restClient.get("/images").then((data) => data.data);
+
+//TODO fix typings, error handling
+export const uploadImage = (data: { file: string | null; description?: string }) =>
+  restClient.post("/images", data);

@@ -15,7 +15,7 @@ import {
 } from "./components";
 import theme from "./themes";
 import { ThemeProvider } from "styled-components";
-import { getImages, Image } from "./services/image/service";
+import { getImages, Image, uploadImage } from "./services/image/service";
 import { Field, Form, Formik } from "formik";
 
 function App() {
@@ -72,7 +72,16 @@ function App() {
             title="New Image"
             onClose={() => setModalOpen((prevState) => !prevState)}
           >
-            <Formik initialValues={initialValues} onSubmit={() => {}}>
+            {/*  TODO add validation */}
+            <Formik
+              initialValues={initialValues}
+              onSubmit={(values: {
+                file: string | null;
+                description?: string;
+              }) => {
+                uploadImage(values);
+              }}
+            >
               <Form>
                 <Col>
                   <Col>
@@ -86,7 +95,9 @@ function App() {
                   </Col>
                   <Row>
                     <Paragraph>{`By uploading an image, you accept our Terms`}</Paragraph>
-                    <Button variant="primary" type="submit">Save</Button>
+                    <Button variant="primary" type="submit">
+                      Save
+                    </Button>
                   </Row>
                 </Col>
               </Form>
