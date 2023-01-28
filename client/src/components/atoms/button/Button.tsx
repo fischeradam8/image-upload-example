@@ -12,6 +12,7 @@ import {
   PositionProps,
   space,
   SpaceProps,
+  variant,
 } from "styled-system";
 
 interface Props
@@ -20,12 +21,22 @@ interface Props
     FlexboxProps,
     LayoutProps,
     PositionProps,
-    SpaceProps {}
+    SpaceProps {
+  variant?: "ghost";
+}
 
-export const Title = styled.h1<Props>`
-  font-size: 2rem;
-  margin: 0;
-
+export const Button = styled.button<Props>`
+  cursor: pointer;
+  ${variant({
+  variants: {
+    ghost: {
+      borderRadius: 0,
+      borderColor: "transparent",
+      backgroundColor: "transparent",
+      padding: 0,
+    },
+  },
+})};
   ${border};
   ${color};
   ${flexbox};

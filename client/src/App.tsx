@@ -42,7 +42,7 @@ function App() {
                   <LimeIcon />
                 </Box>
                 <Box display="flex">
-                  <Title m={0}>LimeCRM</Title>
+                  <Title>LimeCRM</Title>
                 </Box>
               </Row>
             </Box>
@@ -75,7 +75,10 @@ function App() {
           </Col>
         </Col>
         {isModalOpen && (
-          <Modal onClose={() => setModalOpen((prevState) => !prevState)}>
+          <Modal
+            title="New Image"
+            onClose={() => setModalOpen((prevState) => !prevState)}
+          >
             <Box>Hello</Box>
           </Modal>
         )}

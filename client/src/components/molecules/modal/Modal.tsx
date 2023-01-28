@@ -1,14 +1,15 @@
 import React, { FC, ReactNode } from "react";
 import { createPortal } from "react-dom";
-import { Box, Col } from "../../atoms";
+import { Box, Button, Col, Row, Title } from "../../atoms";
 
 interface Props {
   children?: ReactNode;
+  title: string;
   onClose: () => void;
 }
 
 export const Modal: FC<Props> = (props) => {
-  const { children, onClose } = props;
+  const { children, title, onClose } = props;
 
   return createPortal(
     <Box
@@ -24,10 +25,19 @@ export const Modal: FC<Props> = (props) => {
       bg="rgba(0, 0, 0, 0.4)"
     >
       <Box display="flex" width="50%" height="50%" backgroundColor="white">
-        <Col>
-          <Box onClick={onClose}>X</Box>
+        <Col p="0.5rem" width="100%">
+          <Row justifyContent="space-between" alignItems="center">
+            <Box display="flex">
+              <Title>{title}</Title>
+            </Box>
+            <Box display="flex" height="1rem" width="1rem">
+              <Button onClick={onClose} variant="ghost">
+                X
+              </Button>
+            </Box>
+          </Row>
+          {children}
         </Col>
-        {children}
       </Box>
     </Box>,
     document.getElementById("modal-root") || document.createElement("div")
