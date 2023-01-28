@@ -67,6 +67,7 @@ function App() {
             <Title color="neutral">Uploaded images</Title>
             <Row gap={2}>
               <UploadTile
+                size="15rem"
                 onClick={() => setModalOpen((prevState) => !prevState)}
               />
               {images?.map((image) => (
@@ -93,7 +94,7 @@ function App() {
               <Form>
                 <Col>
                   <Col>
-                    <UploadTile hasInput={true} />
+                    <UploadTile size="7rem" hasInput={true} />
                     <Text color="neutral">Only jpg or png</Text>
                   </Col>
                   <Col gap={0}>

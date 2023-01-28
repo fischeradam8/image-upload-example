@@ -4,19 +4,20 @@ import { FileInput } from "../file-input";
 
 interface Props {
   onClick?: () => void;
+  size: string;
   hasInput?: boolean;
 }
 
 export const UploadTile: FC<Props> = (props) => {
-  const { onClick, hasInput = false } = props;
+  const { onClick, size, hasInput = false } = props;
 
   return (
     <>
       <Box
         display="flex"
         backgroundColor="primary"
-        height="15rem"
-        width="15rem"
+        height={size}
+        width={size}
         borderRadius={5}
         borderColor="black"
         borderWidth={1}
