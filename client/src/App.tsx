@@ -8,8 +8,8 @@ import {
   ImageTile,
   LimeIcon,
   Modal,
-  Paragraph,
   Row,
+  Text,
   Title,
   UploadTile,
 } from "./components";
@@ -56,13 +56,15 @@ function App() {
                   <LimeIcon />
                 </Box>
                 <Box display="flex">
-                  <Title>LimeCRM</Title>
+                  <Title color="neutral" fontWeight={900}>
+                    LimeCRM
+                  </Title>
                 </Box>
               </Row>
             </Box>
           </Box>
           <Col px="2rem" gap={2}>
-            <Title>Uploaded images</Title>
+            <Title color="neutral">Uploaded images</Title>
             <Row gap={2}>
               <UploadTile
                 onClick={() => setModalOpen((prevState) => !prevState)}
@@ -92,15 +94,15 @@ function App() {
                 <Col>
                   <Col>
                     <UploadTile hasInput={true} />
-                    <Paragraph>Only jpg or png</Paragraph>
+                    <Text color="neutral">Only jpg or png</Text>
                   </Col>
                   <Col gap={0}>
-                    <Paragraph>Description</Paragraph>
+                    <Text color="neutral">Description</Text>
                     {/*TODO use custom textarea if necessary */}
                     <Field name="description" component="textarea" />
                   </Col>
                   <Row>
-                    <Paragraph>{`By uploading an image, you accept our Terms`}</Paragraph>
+                    <Text color="neutral">{`By uploading an image, you accept our Terms`}</Text>
                     <Button variant="primary" type="submit">
                       Save
                     </Button>

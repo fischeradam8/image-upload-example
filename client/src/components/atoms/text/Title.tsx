@@ -12,6 +12,8 @@ import {
   PositionProps,
   space,
   SpaceProps,
+  typography,
+  TypographyProps,
 } from "styled-system";
 
 interface Props
@@ -20,7 +22,8 @@ interface Props
     FlexboxProps,
     LayoutProps,
     PositionProps,
-    SpaceProps {}
+    SpaceProps,
+    TypographyProps {}
 
 export const Title = styled.h1<Props>`
   font-size: 2rem;
@@ -32,4 +35,5 @@ export const Title = styled.h1<Props>`
   ${space};
   ${layout};
   ${position};
+  ${typography}
 `;

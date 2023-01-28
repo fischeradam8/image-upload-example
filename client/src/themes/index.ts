@@ -4,6 +4,7 @@ const theme: Theme = {
   colors: {
     primary: "#c7ea46",
     border: "#979797",
+    neutral: "#464646",
   },
 };
 
