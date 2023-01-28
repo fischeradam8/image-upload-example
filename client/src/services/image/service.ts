@@ -15,6 +15,10 @@ export interface ApiImage {
 export interface FileData {
   src: string;
   file: File;
+  size: {
+    width: number;
+    height: number;
+  };
 }
 
 export const getImages = () =>
@@ -35,7 +39,9 @@ const denormalizeImage = (fileData: FileData, description?: string) => {
     name: fileData.file.name,
     fileSize: fileData.file.size,
     mimeType: fileData.file.type,
-    uploadedAt: Date.now(),
+    uploadedAt: Date.now().toString(),
+    width: fileData.size.width,
+    height: fileData.size.height,
     description: description,
   };
 };

@@ -15,8 +15,10 @@ interface ImageInterface {
   src: string;
   name: string;
   fileSize: number;
-  uploadedAt: number;
+  uploadedAt: string;
   mimeType: string;
+  height: number;
+  width: number;
   description?: string;
 }
 
@@ -25,8 +27,10 @@ const imageSchema = new Schema<ImageInterface>({
   name: { type: String, required: true },
   fileSize: { type: Number, required: true },
   mimeType: { type: String, required: true },
+  height: { type: Number, required: true },
+  width: { type: Number, required: true },
   description: { type: String, required: false },
-  uploadedAt: { type: Number, required: true },
+  uploadedAt: { type: String, required: true },
 });
 
 const ImageModel = model<ImageInterface>("Image", imageSchema);
@@ -49,6 +53,8 @@ app.post(
         fileSize: request.body.fileSize,
         uploadedAt: request.body.uploadedAt,
         mimeType: request.body.mimeType,
+        height: request.body.height,
+        width: request.body.width,
         description: request.body.description,
       });
       document.save().then(() => response.send());
