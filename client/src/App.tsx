@@ -16,7 +16,7 @@ import {
 import theme from "./themes";
 import { ThemeProvider } from "styled-components";
 import { getImages, Image } from "./services/image/service";
-import { Form, Formik } from "formik";
+import { Field, Form, Formik } from "formik";
 
 function App() {
   const [images, setImages] = useState<undefined | Image[]>();
@@ -81,11 +81,12 @@ function App() {
                   </Col>
                   <Col gap={0}>
                     <Paragraph>Description</Paragraph>
-                    <TextArea></TextArea>
+                    {/*TODO use custom textarea if necessary */}
+                    <Field name="description" component="textarea" />
                   </Col>
                   <Row>
                     <Paragraph>{`By uploading an image, you accept our Terms`}</Paragraph>
-                    <Button variant="primary">Save</Button>
+                    <Button variant="primary" type="submit">Save</Button>
                   </Row>
                 </Col>
               </Form>
