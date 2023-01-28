@@ -41,12 +41,13 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Container>
-        <Col gap={2}>
+        <Col gap={3}>
           <Box
             display="flex"
             width="100%"
             height="3.75rem"
             backgroundColor="primary"
+            boxShadow="10px 8px 10px #888888"
           >
             <Box display="flex">
               <Row px="2rem" alignItems="center">

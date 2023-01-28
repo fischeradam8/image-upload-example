@@ -22,11 +22,12 @@ export const ImageTile: FC<Props> = (props) => {
           width="15rem"
           borderRadius={5}
           backgroundColor="grey"
-          boxShadow="0.5rem 0.5rem lightgray"
+          boxShadow={isActive ? "10px 8px 10px #888888" : "5px 4px 5px #888888"}
           style={{ cursor: "pointer" }}
           onMouseEnter={() => toggleActive((prevState) => !prevState)}
           onMouseLeave={() => toggleActive((prevState) => !prevState)}
           position="relative"
+          mb="1rem"
         >
           <img
             src={image.src ?? ""}
@@ -125,6 +126,7 @@ export const ImageTile: FC<Props> = (props) => {
           alignItems="center"
           justifyContent="center"
           onClick={onClick}
+          mb="1rem"
         >
           <Box>
             <PlusIcon style={{ width: "3.5rem", height: "3.5rem" }} />
