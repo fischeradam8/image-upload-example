@@ -16,10 +16,16 @@ import {
 import theme from "./themes";
 import { ThemeProvider } from "styled-components";
 import { getImages, Image } from "./services/image/service";
+import { Form, Formik } from "formik";
 
 function App() {
   const [images, setImages] = useState<undefined | Image[]>();
   const [isModalOpen, setModalOpen] = useState(false);
+
+  const initialValues = {
+    file: null,
+    description: "",
+  };
 
   //TODO handle errors, prevent loop
   useEffect(() => {
@@ -66,19 +72,24 @@ function App() {
             title="New Image"
             onClose={() => setModalOpen((prevState) => !prevState)}
           >
-            <Col>
-              <Col>
-                <ImageTile />
-              </Col>
-              <Col gap={0}>
-                <Paragraph>Description</Paragraph>
-                <TextArea></TextArea>
-              </Col>
-              <Row>
-                <Paragraph>{`By uploading an image, you accept our Terms`}</Paragraph>
-                <Button variant="primary">Save</Button>
-              </Row>
-            </Col>
+            <Formik initialValues={initialValues} onSubmit={() => {}}>
+              <Form>
+                <Col>
+                  <Col>
+                    <ImageTile hasInput={true} />
+                    <Paragraph>Only jpg or png</Paragraph>
+                  </Col>
+                  <Col gap={0}>
+                    <Paragraph>Description</Paragraph>
+                    <TextArea></TextArea>
+                  </Col>
+                  <Row>
+                    <Paragraph>{`By uploading an image, you accept our Terms`}</Paragraph>
+                    <Button variant="primary">Save</Button>
+                  </Row>
+                </Col>
+              </Form>
+            </Formik>
           </Modal>
         )}
       </Container>

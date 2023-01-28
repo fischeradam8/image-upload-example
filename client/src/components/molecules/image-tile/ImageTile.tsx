@@ -1,14 +1,16 @@
 import React, { FC, useState } from "react";
 import { Box, Col, Paragraph, PlusIcon, Row } from "../../atoms";
 import { Image } from "../../../services/image/service";
+import { FileInput } from "../file-input";
 
 interface Props {
   image?: Image;
   onClick?: () => void;
+  hasInput?: boolean;
 }
 
 export const ImageTile: FC<Props> = (props) => {
-  const { image, onClick } = props;
+  const { image, onClick, hasInput = false } = props;
   const [isActive, toggleActive] = useState(false);
 
   return (
@@ -69,6 +71,7 @@ export const ImageTile: FC<Props> = (props) => {
         >
           <Box>
             <PlusIcon style={{ width: "3.5rem", height: "3.5rem" }} />
+            {hasInput && <FileInput name="file" />}
           </Box>
         </Box>
       )}
