@@ -13,12 +13,20 @@ app.use(bodyParser.json({ limit: "10mb" }));
 
 interface ImageInterface {
   src: string;
+  name: string;
+  fileSize: number;
+  uploadedAt: number;
+  mimeType: string;
   description?: string;
 }
 
 const imageSchema = new Schema<ImageInterface>({
   src: { type: String, required: true },
+  name: { type: String, required: true },
+  fileSize: { type: Number, required: true },
+  mimeType: { type: String, required: true },
   description: { type: String, required: false },
+  uploadedAt: { type: Number, required: true },
 });
 
 const ImageModel = model<ImageInterface>("Image", imageSchema);
@@ -37,6 +45,10 @@ app.post(
     connect("mongodb://127.0.0.1:27017/images-test").then(() => {
       const document = new ImageModel({
         src: request.body.src,
+        name: request.body.name,
+        fileSize: request.body.fileSize,
+        uploadedAt: request.body.uploadedAt,
+        mimeType: request.body.mimeType,
         description: request.body.description,
       });
       document.save().then(() => response.send());

@@ -4,7 +4,7 @@ export interface ApiImage {
   id: string;
   src: string;
   name: string;
-  size: string;
+  fileSize: string;
   width: string;
   height: string;
   uploadedAt: string;
@@ -14,7 +14,7 @@ export interface ApiImage {
 
 export interface FileData {
   src: string;
-  data: File;
+  file: File;
 }
 
 export const getImages = () =>
@@ -29,10 +29,12 @@ export const uploadImage = (file: FileData | null, description?: string) => {
   return restClient.post("/images", denormalizeImage(file, description));
 };
 
-const denormalizeImage = (file: FileData, description?: string) => {
+const denormalizeImage = (fileData: FileData, description?: string) => {
   return {
-    src: file.src,
-    // name: file.data.name,
+    src: fileData.src,
+    name: fileData.file.name,
+    fileSize: fileData.file.size,
+    mimeType: fileData.file.type,
     uploadedAt: Date.now(),
     description: description,
   };

@@ -33,7 +33,7 @@ export const ImageTile: FC<Props> = (props) => {
                 <Paragraph fontSize="0.5rem" color="primary">
                   {image.name}
                 </Paragraph>
-                <Paragraph fontSize="0.5rem">{image.size}</Paragraph>
+                <Paragraph fontSize="0.5rem">{image.fileSize}</Paragraph>
                 <Paragraph
                   fontSize="0.5rem"
                   color="primary"
