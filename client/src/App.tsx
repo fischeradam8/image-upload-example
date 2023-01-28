@@ -11,14 +11,15 @@ import {
   Paragraph,
   Row,
   Title,
+  UploadTile,
 } from "./components";
 import theme from "./themes";
 import { ThemeProvider } from "styled-components";
 import {
-  getImages,
   ApiImage,
-  uploadImage,
   FileData,
+  getImages,
+  uploadImage,
 } from "./services/image/service";
 import { Field, Form, Formik } from "formik";
 
@@ -63,7 +64,7 @@ function App() {
           <Col px="2rem" gap={2}>
             <Title>Uploaded images</Title>
             <Row gap={2}>
-              <ImageTile
+              <UploadTile
                 onClick={() => setModalOpen((prevState) => !prevState)}
               />
               {images?.map((image) => (
@@ -90,7 +91,7 @@ function App() {
               <Form>
                 <Col>
                   <Col>
-                    <ImageTile hasInput={true} />
+                    <UploadTile hasInput={true} />
                     <Paragraph>Only jpg or png</Paragraph>
                   </Col>
                   <Col gap={0}>
