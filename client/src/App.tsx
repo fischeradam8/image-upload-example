@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import {
   Box,
+  Button,
   Col,
   Container,
   ImageTile,
   LimeIcon,
   Modal,
-  PlusIcon,
+  Paragraph,
   Row,
+  TextArea,
   Title,
 } from "./components";
 import theme from "./themes";
@@ -50,26 +52,11 @@ function App() {
           <Col px="2rem" gap={2}>
             <Title>Uploaded images</Title>
             <Row gap={2}>
-              <Box
-                display="flex"
-                backgroundColor="primary"
-                height="10rem"
-                width="10rem"
-                borderRadius={5}
-                borderColor="black"
-                borderWidth={1}
-                borderStyle="solid"
+              <ImageTile
                 onClick={() => setModalOpen((prevState) => !prevState)}
-                style={{ cursor: "pointer" }}
-                alignItems="center"
-                justifyContent="center"
-              >
-                <Box>
-                  <PlusIcon style={{ width: "3.5rem", height: "3.5rem" }} />
-                </Box>
-              </Box>
+              />
               {images?.map((image) => (
-                <ImageTile key={`${image.id}-image`} image={image}></ImageTile>
+                <ImageTile key={`${image.id}-image`} image={image} />
               ))}
             </Row>
           </Col>
@@ -79,7 +66,19 @@ function App() {
             title="New Image"
             onClose={() => setModalOpen((prevState) => !prevState)}
           >
-            <Box>Hello</Box>
+            <Col>
+              <Col>
+                <ImageTile />
+              </Col>
+              <Col gap={0}>
+                <Paragraph>Description</Paragraph>
+                <TextArea></TextArea>
+              </Col>
+              <Row>
+                <Paragraph>{`By uploading an image, you accept our Terms`}</Paragraph>
+                <Button variant="primary">Save</Button>
+              </Row>
+            </Col>
           </Modal>
         )}
       </Container>
