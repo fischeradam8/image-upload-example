@@ -14,7 +14,12 @@ import {
 } from "./components";
 import theme from "./themes";
 import { ThemeProvider } from "styled-components";
-import { getImages, ApiImage, uploadImage } from "./services/image/service";
+import {
+  getImages,
+  ApiImage,
+  uploadImage,
+  FileData,
+} from "./services/image/service";
 import { Field, Form, Formik } from "formik";
 
 function App() {
@@ -75,10 +80,10 @@ function App() {
             <Formik
               initialValues={initialValues}
               onSubmit={(values: {
-                file: string | null;
+                file: FileData | null;
                 description?: string;
               }) => {
-                uploadImage(values);
+                uploadImage(values.file, values.description);
               }}
             >
               <Form>

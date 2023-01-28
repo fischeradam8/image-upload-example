@@ -2,7 +2,7 @@ import { restClient } from "../rest-client";
 
 export interface ApiImage {
   id: string;
-  image: string;
+  src: string;
   name: string;
   size: string;
   width: string;
@@ -12,11 +12,28 @@ export interface ApiImage {
   description?: string;
 }
 
+export interface FileData {
+  src: string;
+  data: File;
+}
+
 export const getImages = () =>
   restClient.get("/images").then((data) => data.data);
 
-//TODO fix typings, error handling
-export const uploadImage = (data: {
-  file: string | null;
-  description?: string;
-}) => restClient.post("/images", data);
+//TODO error handling
+export const uploadImage = (file: FileData | null, description?: string) => {
+  if (!file) {
+    //TODO
+    return;
+  }
+  return restClient.post("/images", denormalizeImage(file, description));
+};
+
+const denormalizeImage = (file: FileData, description?: string) => {
+  return {
+    src: file.src,
+    // name: file.data.name,
+    uploadedAt: Date.now(),
+    description: description,
+  };
+};

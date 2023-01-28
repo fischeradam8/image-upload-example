@@ -17,8 +17,8 @@ export const FileInput: FC<Props> = (props) => {
       onChange={(event) => {
         const fileReader = new FileReader();
         fileReader.onload = () => {
-          if (fileReader.readyState === 2) {
-            setValue(fileReader.result);
+          if (fileReader.readyState === 2 && event?.target?.files?.[0]) {
+            setValue({ src: fileReader.result, file: event.target.files[0] });
           }
         };
         if (event?.target?.files?.[0]) {

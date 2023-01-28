@@ -26,7 +26,7 @@ export const ImageTile: FC<Props> = (props) => {
           onMouseEnter={() => toggleActive((prevState) => !prevState)}
           onMouseLeave={() => toggleActive((prevState) => !prevState)}
         >
-          <img src={image.image ?? ""} alt="" />
+          <img src={image.src ?? ""} alt="" />
           {isActive && (
             <Row>
               <Col p="0.5rem">

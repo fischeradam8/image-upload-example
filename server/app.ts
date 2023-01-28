@@ -12,12 +12,12 @@ app.use(cors());
 app.use(bodyParser.json({ limit: "10mb" }));
 
 interface ImageInterface {
-  image: string;
+  src: string;
   description?: string;
 }
 
 const imageSchema = new Schema<ImageInterface>({
-  image: { type: String, required: true },
+  src: { type: String, required: true },
   description: { type: String, required: false },
 });
 
@@ -36,7 +36,7 @@ app.post(
   (request: Request, response: Response) => {
     connect("mongodb://127.0.0.1:27017/images-test").then(() => {
       const document = new ImageModel({
-        image: request.body.file,
+        src: request.body.src,
         description: request.body.description,
       });
       document.save().then(() => response.send());
