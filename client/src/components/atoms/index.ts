@@ -5,3 +5,4 @@ export * from "./icons";
 export * from "./row";
 export * from "./text";
 export * from "./button";
+export * from "./text-area";
