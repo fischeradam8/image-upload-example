@@ -22,21 +22,29 @@ interface Props
     LayoutProps,
     PositionProps,
     SpaceProps {
-  variant?: "ghost";
+  variant?: "ghost" | "primary";
 }
 
 export const Button = styled.button<Props>`
   cursor: pointer;
   ${variant({
-  variants: {
-    ghost: {
-      borderRadius: 0,
-      borderColor: "transparent",
-      backgroundColor: "transparent",
-      padding: 0,
+    variants: {
+      ghost: {
+        borderRadius: 0,
+        borderColor: "transparent",
+        backgroundColor: "transparent",
+        padding: 0,
+      },
+      primary: {
+        borderRadius: 5,
+        borderColor: "border",
+        borderWidth: "1px",
+        padding: "0.5rem 2rem",
+        backgroundColor: "primary",
+        fontWeight: "bold",
+      },
     },
-  },
-})};
+  })};
   ${border};
   ${color};
   ${flexbox};
