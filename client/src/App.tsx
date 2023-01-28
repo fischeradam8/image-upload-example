@@ -6,6 +6,8 @@ import {
   Container,
   ImageTile,
   LimeIcon,
+  Modal,
+  PlusIcon,
   Row,
   Title,
 } from "./components";
@@ -15,6 +17,7 @@ import { getImages, Image } from "./services/image/service";
 
 function App() {
   const [images, setImages] = useState<undefined | Image[]>();
+  const [isModalOpen, setModalOpen] = useState(false);
 
   //TODO handle errors, prevent loop
   useEffect(() => {
@@ -48,6 +51,7 @@ function App() {
             <Title>Uploaded images</Title>
             <Row gap={2}>
               <Box
+                display="flex"
                 backgroundColor="primary"
                 height="10rem"
                 width="10rem"
@@ -55,13 +59,26 @@ function App() {
                 borderColor="black"
                 borderWidth={1}
                 borderStyle="solid"
-              ></Box>
+                onClick={() => setModalOpen((prevState) => !prevState)}
+                style={{ cursor: "pointer" }}
+                alignItems="center"
+                justifyContent="center"
+              >
+                <Box>
+                  <PlusIcon style={{ width: "3.5rem", height: "3.5rem" }} />
+                </Box>
+              </Box>
               {images?.map((image) => (
                 <ImageTile key={`${image.id}-image`} image={image}></ImageTile>
               ))}
             </Row>
           </Col>
         </Col>
+        {isModalOpen && (
+          <Modal onClose={() => setModalOpen((prevState) => !prevState)}>
+            <Box>Hello</Box>
+          </Modal>
+        )}
       </Container>
     </ThemeProvider>
   );
