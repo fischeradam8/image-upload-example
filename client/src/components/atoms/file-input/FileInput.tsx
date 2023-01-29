@@ -39,17 +39,22 @@ export const FileInput: FC<Props> = (props) => {
             if (typeof fileReader.result === "string") {
               const image = new Image();
               image.src = fileReader.result;
-              if (onSetImageSrc) {
-                onSetImageSrc(image.src);
-              }
-              setValue({
-                src: fileReader.result,
-                file: event.target.files[0],
-                size: {
-                  width: image.naturalWidth,
-                  height: image.naturalHeight,
-                },
-              });
+              image.onload = () => {
+                if (!event?.target?.files?.[0]) {
+                  return;
+                }
+                if (onSetImageSrc) {
+                  onSetImageSrc(image.src);
+                }
+                setValue({
+                  src: fileReader.result,
+                  file: event.target.files[0],
+                  size: {
+                    width: image.naturalWidth,
+                    height: image.naturalHeight,
+                  },
+                });
+              };
             }
           }
         };

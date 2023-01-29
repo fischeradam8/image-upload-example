@@ -9,7 +9,6 @@ import {
   Modal,
   Row,
   Text,
-  TextArea,
   Title,
   UploadTile,
 } from "./components";
@@ -40,7 +39,6 @@ function App() {
     }
   }, [formRef]);
 
-  //TODO handle errors, prevent loop
   useEffect(() => {
     if (!images) {
       getImages().then((data) => setImages(data as ApiImage[]));
