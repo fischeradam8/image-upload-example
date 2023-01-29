@@ -6,7 +6,7 @@ import { createImage, listImages } from "./images/controller.js";
 import { MetaError } from "./errors/MetaError.js";
 
 const app: Express = express();
-const port = "3001"; //TODO
+const port = "3001"; //TODO use env
 const upload = multer();
 
 app.use(cors());

@@ -16,7 +16,7 @@ interface Props {
 
 export const FileInput: FC<Props> = (props) => {
   const { name, onSetInputRef, onSetImageSrc } = props;
-  const [, , { setValue }] = useField(name);
+  const [value, , { setValue }] = useField(name);
   const inputRef = React.useRef(null);
 
   useEffect(() => {
@@ -24,6 +24,12 @@ export const FileInput: FC<Props> = (props) => {
       onSetInputRef(inputRef);
     }
   }, [onSetInputRef, inputRef]);
+
+  useEffect(() => {
+    if (!value.value && onSetImageSrc) {
+      onSetImageSrc(undefined);
+    }
+  }, [value, onSetImageSrc]);
 
   return (
     <input
