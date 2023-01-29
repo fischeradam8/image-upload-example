@@ -21,6 +21,7 @@ export const ImageTile: FC<Props> = (props) => {
       style={{ cursor: "pointer" }}
       onMouseEnter={() => toggleActive((prevState) => !prevState)}
       onMouseLeave={() => toggleActive((prevState) => !prevState)}
+      onTouchStart={() => toggleActive((prevState) => !prevState)} //TODO check
       position="relative"
       mb="1rem"
     >
