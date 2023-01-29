@@ -37,6 +37,8 @@ export const ImageTile: FC<Props> = (props) => {
       />
       {isActive && (
         <Col
+          width="13.6rem" //TODO check size
+          height="14.5rem"
           p="0.5rem 0.8rem 0 0.8rem"
           position="absolute"
           backgroundColor="rgba(0, 0, 0, 0.7)"
@@ -46,7 +48,7 @@ export const ImageTile: FC<Props> = (props) => {
           <Row justifyContent="space-between">
             <Col gap="0">
               <Text color="primary">{image.name}</Text>
-              <Text fontSize="0.8rem" color="white" fontWeight={700}>
+              <Text fontSize="0.8rem" color="contrastText" fontWeight={700}>
                 {image.fileSize}
               </Text>
             </Col>
@@ -61,26 +63,23 @@ export const ImageTile: FC<Props> = (props) => {
             <tbody>
               <tr>
                 <td>
-                  <Text fontSize="0.8rem" color="primary" fontWeight={700}>
-                    Uploaded:
-                  </Text>
+                  <Text variant="label">Uploaded:</Text>
                 </td>
                 <td>
-                  <Text fontSize="0.8rem" color="white">
+                  <Text fontSize="0.8rem" color="contrastText">
+                    {/*TODO fix dates*/}
                     {dayjs(image.uploadedAt).format("YYYY.MM.DD HH:mm")}
                   </Text>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <Text fontSize="0.8rem" color="primary" fontWeight={700}>
-                    Size:
-                  </Text>
+                  <Text variant="label">Size:</Text>
                 </td>
                 <td>
                   <Text
                     fontSize="0.8rem"
-                    color="white"
+                    color="contrastText"
                   >{`${image.width} x ${image.height}`}</Text>
                 </td>
               </tr>
@@ -88,19 +87,8 @@ export const ImageTile: FC<Props> = (props) => {
           </table>
           {image.description && (
             <>
-              <Text fontSize="0.8rem" color="primary">
-                Details
-              </Text>
-              <Text
-                display="-webkit-box"
-                fontSize="0.8rem"
-                color="white"
-                overflow="hidden"
-                style={{ lineClamp: 5, boxOrient: "vertical" }} //TODO fix
-                maxWidth="15rem"
-              >
-                {image.description}
-              </Text>
+              <Text variant="label">Details</Text>
+              <Text variant="description">{image.description}</Text>
             </>
           )}
         </Col>

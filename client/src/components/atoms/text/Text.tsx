@@ -15,6 +15,7 @@ import {
   system,
   typography,
   TypographyProps,
+  variant,
 } from "styled-system";
 
 interface Props
@@ -27,6 +28,7 @@ interface Props
     TypographyProps {
   whiteSpace?: CSSProperties["whiteSpace"];
   textOverflow?: CSSProperties["textOverflow"];
+  variant?: "description" | "label";
 }
 
 export const Text = styled.span<Props>`
@@ -37,6 +39,26 @@ export const Text = styled.span<Props>`
     whiteSpace: true,
     textOverflow: true,
   })};
+
+  ${variant({
+    variants: {
+      description: {
+        color: "contrastText",
+        display: "-webkit-box",
+        fontSize: "0.8rem",
+        overflow: "hidden",
+        maxWidth: "15rem",
+        "-webkit-line-clamp": "5",
+        "-webkit-box-orient": "vertical",
+      },
+      label: {
+        color: "primary",
+        fontSize: "0.8rem",
+        fontWeight: "bold",
+      },
+    },
+  })};
+
   ${border};
   ${color};
   ${flexbox};
