@@ -1,12 +1,3 @@
-export abstract class MongoDBError extends Error {
-  protected code: 400 | 500;
+import { MetaError } from "./MetaError.js";
 
-  constructor(code: 400 | 500) {
-    super();
-    this.code = code;
-  }
-
-  public getCode(): 400 | 500 {
-    return this.code;
-  }
-}
+export abstract class MongoDBError extends MetaError {}
