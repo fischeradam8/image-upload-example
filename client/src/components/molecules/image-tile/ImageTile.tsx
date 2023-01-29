@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react";
 import { Box, Col, LinkIcon, Row, Text } from "../../atoms";
 import { ApiImage } from "../../../services/image/service";
-import dayjs from "dayjs";
+import moment from "moment";
 
 interface Props {
   image: ApiImage;
@@ -68,8 +68,7 @@ export const ImageTile: FC<Props> = (props) => {
                 </td>
                 <td>
                   <Text fontSize="0.8rem" color="contrastText">
-                    {/*TODO fix dates*/}
-                    {dayjs(image.uploadedAt).format("YYYY.MM.DD HH:mm")}
+                    {moment(image.uploadedAt).format("YYYY.MM.DD HH:mm")}
                   </Text>
                 </td>
               </tr>

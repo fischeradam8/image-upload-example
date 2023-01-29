@@ -1,5 +1,6 @@
 import { AxiosResponse } from "axios";
 import { restClient } from "../rest-client";
+import moment from "moment";
 
 export interface ApiImage {
   id: string;
@@ -45,7 +46,7 @@ const denormalizeImage = (fileData: FileData, description?: string) => {
     name: fileData.file.name,
     fileSize: fileData.file.size,
     mimeType: fileData.file.type,
-    uploadedAt: Date.now().toString(),
+    uploadedAt: moment.utc().toJSON(),
     width: fileData.size.width,
     height: fileData.size.height,
     description: description,
