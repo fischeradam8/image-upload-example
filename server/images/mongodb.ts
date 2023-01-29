@@ -7,9 +7,14 @@ dotenv.config();
 const url = process.env.MONGO_CONNECTION_URL ?? "";
 
 export const findImages = () => {
-  return connect(url).then(() => {
-    return ImageModel.find().sort("-uploadedAt").exec();
-  });
+  return connect(url).then(
+    () => {
+      return ImageModel.find().sort("-uploadedAt").exec();
+    },
+    (error) => {
+      throw error;
+    }
+  );
 };
 
 export const saveImage = (request: Request) => {
