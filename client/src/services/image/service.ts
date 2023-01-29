@@ -1,7 +1,9 @@
+import { AxiosResponse } from "axios";
 import { restClient } from "../rest-client";
 
 export interface ApiImage {
   id: string;
+  _id: string;
   src: string;
   name: string;
   fileSize: string;
@@ -22,7 +24,11 @@ export interface FileData {
 }
 
 export const getImages = () =>
-  restClient.get("/images").then((data) => data.data);
+  restClient.get("/images").then(
+    (data: AxiosResponse<ApiImage[]>) =>
+      data.data.map((datum) => ({ ...datum, id: datum["_id"] })),
+    () => []
+  );
 
 //TODO error handling
 export const uploadImage = (file: FileData | null, description?: string) => {
