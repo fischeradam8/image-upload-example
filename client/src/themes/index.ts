@@ -5,7 +5,9 @@ const theme: Theme = {
     primary: "#c7ea46",
     border: "#979797",
     neutral: "#464646",
-    contrastText: "white",
+    contrastText: "#ffffff",
+    disabledBackground: "#bfbfbf",
+    disabledText: "#f5f5f5",
   },
 };
 

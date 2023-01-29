@@ -14,6 +14,7 @@ import {
   SpaceProps,
   variant,
 } from "styled-system";
+import { themeGet } from "@styled-system/theme-get";
 
 interface Props
   extends BorderProps,
@@ -45,6 +46,14 @@ export const Button = styled.button<Props>`
       },
     },
   })};
+
+  :disabled {
+    background-color: ${themeGet("colors.disabledBackground", "#fff")};
+    border-color: ${themeGet("colors.disabledBackground", "#fff")};
+    color: ${themeGet("colors.disabledText", "#fff")};
+    cursor: not-allowed;
+  }
+
   ${border};
   ${color};
   ${flexbox};
