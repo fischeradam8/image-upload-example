@@ -10,11 +10,12 @@ interface Props {
 export const ImageTile: FC<Props> = (props) => {
   const { image } = props;
   const [isActive, toggleActive] = useState(false);
+  const size = "15rem";
 
   return (
     <Box
-      height="15rem"
-      width="15rem"
+      height={size}
+      width={size}
       borderRadius={5}
       backgroundColor="grey"
       boxShadow={isActive ? "10px 8px 10px #888888" : "5px 4px 5px #888888"}
@@ -29,21 +30,22 @@ export const ImageTile: FC<Props> = (props) => {
         src={image.src ?? ""}
         style={{
           objectFit: "cover",
-          height: "15rem",
-          width: "15rem",
+          height: size,
+          width: size,
           ...(isActive ? { filter: "grayscale(100%)" } : {}),
         }}
         alt=""
       />
       {isActive && (
         <Col
-          width="13.6rem" //TODO check size
-          height="14.5rem"
+          width={size}
+          height={size}
           p="0.5rem 0.8rem 0 0.8rem"
           position="absolute"
           backgroundColor="rgba(0, 0, 0, 0.7)"
           top={0}
           left={0}
+          style={{ boxSizing: "border-box" }}
         >
           <Row justifyContent="space-between">
             <Col gap="0" maxWidth="70%">

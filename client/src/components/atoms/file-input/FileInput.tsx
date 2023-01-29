@@ -9,7 +9,7 @@ import { useField } from "formik";
 
 interface Props {
   name: string;
-  //TODO decouple?
+  //TODO decouple -> currently uses images
   onSetInputRef?: Dispatch<SetStateAction<MutableRefObject<any> | undefined>>;
   onSetImageSrc?: Dispatch<SetStateAction<string | undefined>>;
 }
