@@ -1,25 +1,11 @@
-import ImageModel from "./model.js";
-import { connect } from "mongoose";
 import { Request } from "express";
+import { findImages, saveImage } from "./mongodb.js";
+import ImageInterface from "./interface";
 
 export const listImages = () => {
-  return connect("mongodb://127.0.0.1:27017/images-test").then(() => {
-    return ImageModel.find().sort("-uploadedAt").exec();
-  });
+  return findImages();
 };
 
-export const createImage = (request: Request) => {
-  return connect("mongodb://127.0.0.1:27017/images-test").then(() => {
-    const document = new ImageModel({
-      src: request.body.src,
-      name: request.body.name,
-      fileSize: request.body.fileSize,
-      uploadedAt: request.body.uploadedAt,
-      mimeType: request.body.mimeType,
-      height: request.body.height,
-      width: request.body.width,
-      description: request.body.description,
-    });
-    return document.save();
-  });
+export const createImage = (request: Request): Promise<ImageInterface> => {
+  return saveImage(request);
 };

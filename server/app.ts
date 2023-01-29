@@ -5,7 +5,7 @@ import bodyParser from "body-parser";
 import { createImage, listImages } from "./images/controller.js";
 
 const app: Express = express();
-const port = "3001";
+const port = "3001"; //TODO
 const upload = multer();
 
 app.use(cors());
