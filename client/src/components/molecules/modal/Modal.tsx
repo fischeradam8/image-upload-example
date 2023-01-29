@@ -25,7 +25,7 @@ export const Modal: FC<Props> = (props) => {
       zIndex={999}
       bg="rgba(0, 0, 0, 0.4)"
     >
-      <Box display="flex" width="45%" height="70%" backgroundColor="white">
+      <Box display="flex" maxWidth={700} height="70%" backgroundColor="white">
         <Col p="1rem" justifyContent="space-between" height="90%%" width="100%">
           <Col>
             <Row justifyContent="space-between" alignItems="center">

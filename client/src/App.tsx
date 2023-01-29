@@ -118,7 +118,13 @@ function App() {
                       Description
                     </Text>
                     <Box maxWidth="75%" height="10rem">
-                      <Field name="description" component={TextArea} />
+                      <Field
+                        name="description"
+                        component="textarea"
+                        style={{ resize: "none" }}
+                        rows={4}
+                        cols={40}
+                      />
                     </Box>
                   </Col>
                 </Col>
