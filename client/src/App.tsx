@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import "./App.css";
 import {
   Box,
-  Button,
   Col,
   Container,
   ImageTile,
@@ -28,10 +27,18 @@ function App() {
   const [images, setImages] = useState<undefined | ApiImage[]>();
   const [isModalOpen, setModalOpen] = useState(false);
 
+  const formRef = React.useRef(null);
   const initialValues = {
     file: null,
     description: "",
   };
+
+  const handleSubmit = useCallback(() => {
+    if (formRef.current) {
+      //@ts-ignore TODO
+      formRef.current.handleSubmit();
+    }
+  }, [formRef]);
 
   //TODO handle errors, prevent loop
   useEffect(() => {
@@ -81,15 +88,23 @@ function App() {
           <Modal
             title="New Image"
             onClose={() => setModalOpen((prevState) => !prevState)}
+            onSubmit={handleSubmit}
           >
             {/*  TODO add validation */}
             <Formik
+              innerRef={formRef}
               initialValues={initialValues}
               onSubmit={(values: {
                 file: FileData | null;
                 description?: string;
               }) => {
-                uploadImage(values.file, values.description);
+                //TODO add react-query to update cache instead
+                uploadImage(values.file, values.description)?.then(() =>
+                  getImages().then((imageData) => {
+                    setImages(imageData);
+                    setModalOpen((prevState) => !prevState);
+                  })
+                );
               }}
             >
               <Form>

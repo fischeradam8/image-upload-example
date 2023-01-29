@@ -6,10 +6,11 @@ interface Props {
   children?: ReactNode;
   title: string;
   onClose: () => void;
+  onSubmit: () => void;
 }
 
 export const Modal: FC<Props> = (props) => {
-  const { children, title, onClose } = props;
+  const { children, title, onClose, onSubmit } = props;
 
   return createPortal(
     <Box
@@ -46,7 +47,7 @@ export const Modal: FC<Props> = (props) => {
                 Terms
               </Link>
             </Row>
-            <Button variant="primary" type="submit">
+            <Button variant="primary" onClick={onSubmit}>
               Save
             </Button>
           </Row>
