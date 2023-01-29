@@ -47,8 +47,16 @@ export const ImageTile: FC<Props> = (props) => {
           left={0}
         >
           <Row justifyContent="space-between">
-            <Col gap="0">
-              <Text color="primary">{image.name}</Text>
+            <Col gap="0" maxWidth="70%">
+              <Text
+                color="primary"
+                whiteSpace="nowrap"
+                textOverflow="ellipsis"
+                overflow="hidden"
+                title={image.name}
+              >
+                {image.name}
+              </Text>
               <Text fontSize="0.8rem" color="contrastText" fontWeight={700}>
                 {image.fileSize}
               </Text>
