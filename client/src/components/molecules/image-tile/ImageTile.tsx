@@ -60,7 +60,7 @@ export const ImageTile: FC<Props> = (props) => {
                 {image.name}
               </Text>
               <Text fontSize="0.8rem" color="contrastText" fontWeight={700}>
-                {`${convertBytesToMegaBytes(parseInt(image.fileSize))} mb`}
+                {`${convertBytesToMegaBytes(parseInt(image.fileSize))} MB`}
               </Text>
             </Col>
             <Box
