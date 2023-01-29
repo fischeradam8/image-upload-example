@@ -3,6 +3,7 @@ import { findImages, saveImage } from "./mongodb.js";
 import ImageInterface from "./interface";
 import { MongoDBConnectionError } from "../errors/MongoDBConnectionError.js";
 import { FileTypeError } from "../errors/FileTypeError.js";
+import { MissingPropertyError } from "../errors/MissingPropertyError.js";
 
 export const listImages = () => {
   return findImages().then(
@@ -24,5 +25,17 @@ const validateCreateImageRequest = (request: Request): Promise<any> => {
     if (!["image/jpeg", "image/png"].includes(request.body.mimeType)) {
       reject(new FileTypeError());
     }
+    if (
+      !request.body.mimeType ||
+      !request.body.src ||
+      !request.body.name ||
+      !request.body.fileSize ||
+      !request.body.uploadedAt ||
+      !request.body.height ||
+      !request.body.width
+    ) {
+      reject(new MissingPropertyError());
+    }
+    resolve("");
   });
 };
