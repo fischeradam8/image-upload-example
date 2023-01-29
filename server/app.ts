@@ -38,7 +38,10 @@ const ImageModel = model<ImageInterface>("Image", imageSchema);
 //LIST
 app.get("/images", (request: Request, response: Response) => {
   connect("mongodb://127.0.0.1:27017/images-test").then(() => {
-    ImageModel.find().then((data) => response.send(data));
+    ImageModel.find()
+      .sort("-uploadedAt")
+      .exec()
+      .then((data) => response.send(data));
   });
 });
 
