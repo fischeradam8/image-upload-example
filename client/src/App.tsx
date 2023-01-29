@@ -10,6 +10,7 @@ import {
   Modal,
   Row,
   Text,
+  TextArea,
   Title,
   UploadTile,
 } from "./components";
@@ -92,22 +93,19 @@ function App() {
               }}
             >
               <Form>
-                <Col>
-                  <Col>
+                <Col gap={3}>
+                  <Col gap="0">
                     <UploadTile size="7rem" hasInput={true} />
                     <Text color="neutral">Only jpg or png</Text>
                   </Col>
-                  <Col gap={0}>
-                    <Text color="neutral">Description</Text>
-                    {/*TODO use custom textarea if necessary */}
-                    <Field name="description" component="textarea" />
+                  <Col gap="0">
+                    <Text color="neutral" fontWeight={700}>
+                      Description
+                    </Text>
+                    <Box maxWidth="75%" height="10rem">
+                      <Field name="description" component={TextArea} />
+                    </Box>
                   </Col>
-                  <Row>
-                    <Text color="neutral">{`By uploading an image, you accept our Terms`}</Text>
-                    <Button variant="primary" type="submit">
-                      Save
-                    </Button>
-                  </Row>
                 </Col>
               </Form>
             </Formik>

@@ -7,3 +7,4 @@ export * from "./text";
 export * from "./button";
 export * from "./text-area";
 export * from "./file-input";
+export * from "./link";

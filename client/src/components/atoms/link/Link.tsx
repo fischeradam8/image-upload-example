@@ -12,6 +12,8 @@ import {
   PositionProps,
   space,
   SpaceProps,
+  TypographyProps,
+  typography,
 } from "styled-system";
 
 interface Props
@@ -20,13 +22,16 @@ interface Props
     FlexboxProps,
     LayoutProps,
     PositionProps,
-    SpaceProps {}
+    SpaceProps,
+    TypographyProps {}
 
-export const TextArea = styled.textarea<Props>`
-  resize: none;
-  width: 100%;
-  height: 100%;
+export const Link = styled.a<Props>`
+  text-decoration: none;
 
+  :hover {
+    text-decoration: underline;
+  }
+  ${typography};
   ${border};
   ${color};
   ${flexbox};
