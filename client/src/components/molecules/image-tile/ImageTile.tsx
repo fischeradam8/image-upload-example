@@ -31,8 +31,7 @@ export const ImageTile: FC<Props> = (props) => {
           objectFit: "cover",
           height: "15rem",
           width: "15rem",
-          ...(isActive ? { filter: "blur(4px)" } : {}),
-          //  TODO blur overflows
+          ...(isActive ? { filter: "grayscale(100%)" } : {}),
         }}
         alt=""
       />
