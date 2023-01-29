@@ -46,6 +46,8 @@ function App() {
           setModalOpen((prevState) => !prevState);
         })
       );
+      //TODO
+      formik.resetForm();
     },
   });
 
