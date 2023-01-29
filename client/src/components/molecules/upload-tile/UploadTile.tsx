@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, MutableRefObject, useCallback, useState } from "react";
 import { Box, FileInput, PlusIcon } from "../../atoms";
 
 interface Props {
@@ -9,6 +9,16 @@ interface Props {
 
 export const UploadTile: FC<Props> = (props) => {
   const { onClick, size, hasInput = false } = props;
+  const [inputRef, setInputRef] = useState<MutableRefObject<any> | undefined>();
+
+  const handleClick = useCallback(() => {
+    if (onClick) {
+      onClick();
+    }
+    if (inputRef) {
+      inputRef.current.click();
+    }
+  }, [onClick, inputRef]);
 
   return (
     <>
@@ -24,12 +34,12 @@ export const UploadTile: FC<Props> = (props) => {
         style={{ cursor: "pointer" }}
         alignItems="center"
         justifyContent="center"
-        onClick={onClick}
+        onClick={handleClick}
         mb="1rem"
       >
         <Box>
           <PlusIcon style={{ width: "3.5rem", height: "3.5rem" }} />
-          {hasInput && <FileInput name="file" />}
+          {hasInput && <FileInput name="file" onSetInputRef={setInputRef} />}
         </Box>
       </Box>
     </>
