@@ -2,6 +2,7 @@ import React, { FC, useState } from "react";
 import { Box, Col, LinkIcon, Row, Text } from "../../atoms";
 import { ApiImage } from "../../../services/image/service";
 import moment from "moment";
+import { convertBytesToMegaBytes } from "../../../utils/convertBytesToMegaBytes";
 
 interface Props {
   image: ApiImage;
@@ -59,7 +60,7 @@ export const ImageTile: FC<Props> = (props) => {
                 {image.name}
               </Text>
               <Text fontSize="0.8rem" color="contrastText" fontWeight={700}>
-                {image.fileSize}
+                {`${convertBytesToMegaBytes(parseInt(image.fileSize))} mb`}
               </Text>
             </Col>
             <Box
